@@ -11,6 +11,7 @@ pipeline{
         stage('Run Docker Container') {
             steps {
                 echo 'Running Docker Container...'
+                bat 'docker rm -f flask-container ||exit 0'
                 bat 'docker run -d -p 5000:5000 --name flask-container my-flask-app:latest'
             }
         }
